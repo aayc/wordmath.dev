@@ -42,7 +42,10 @@ while True:
 
     res = []
     for model_name in USE_MODELS:
-        similar = models[model_name].most_similar(positive = pos, negative = neg)
-        words_only = [m[0] for m in similar]
-        res.append(model_name + ":" + " ".join(words_only))
+        if all([w in models[model_name].vocab for w in pos]) and all([w in models[model_name].vocab for w in neg]):
+            similar = models[model_name].most_similar(positive = pos, negative = neg)
+            words_only = [m[0] for m in similar]
+            res.append(model_name + ":" + " ".join(words_only))
+        else:
+            res.append(model_name + ":" + "not_in_database")
     print(";".join(res))
