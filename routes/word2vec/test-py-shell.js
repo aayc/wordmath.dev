@@ -5,9 +5,9 @@ var readline = require('readline')
 var options = {
   mode: "text",
   pythonOptions: ["-u"],
-  pythonPath: "/Users/aaronchan/Projects/politweet/env/bin/python3"
+  pythonPath: "env/bin/python3"
 }
-var pyshell = new PythonShell('words.py', options)
+var pyshell = new PythonShell('test.py', options)
 let i = 0
 
 pyshell.on('message', function (message) {

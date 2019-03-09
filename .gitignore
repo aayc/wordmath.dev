@@ -14,6 +14,8 @@ client/build
 /node_modules
 .pnp
 .pnp.js
+routes/word2vec/models/
+routes/word2vec/env/
 
 # misc
 .DS_Store
