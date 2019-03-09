@@ -3,6 +3,48 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="bootstrap.min.css" /> 
+    <style>
+      body {
+      }
+
+      input {
+        border: none;
+        background: transparent;
+        font-size: 100px;
+        text-align: center;
+        font-family: "Times New Roman";
+        outline-width: 0;
+        color: #fcfcfc;
+      }
+
+      button {
+        display:block;
+        border: none;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+      }
+
+      table {
+        width: 50%;
+        padding: 400px;
+        border-spacing: 100px;
+         table-layout: fixed; 
+
+      }
+
+      th {
+        font-family: "Times New Roman";
+        font-size: 35px;
+        font-weight: 400;
+      }
+      td {
+        font-family: "Times New Roman";
+        font-size: 20px;
+      }
+
+    </style>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -22,7 +64,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Words Math</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -38,4 +80,7 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    document.getElementById("input-equation").focus();
+  </script>
 </html>
