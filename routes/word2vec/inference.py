@@ -6,9 +6,10 @@ from gensim.models import Doc2Vec
 from gensim.models.keyedvectors import Doc2VecKeyedVectors
 
 
-USE_MODELS = ["google_news", "wikipedia"]
+USE_MODELS = ["google_news", "wikipedia", "twitter"]
 model_fnames = {"wikipedia": "routes/word2vec/models/glove.6B.300d.txt",
-          "google_news": "routes/word2vec/models/GoogleNews-vectors-negative300.bin" }
+          "google_news": "routes/word2vec/models/GoogleNews-vectors-negative300.bin",
+          "twitter": "routes/word2vec/models/glove.twitter.27B.50d.txt"}
 
 models = {}
 
@@ -18,6 +19,9 @@ for model_name, model_fname in model_fnames.items():
     if model_name == "google_news":
         models[model_name] = KeyedVectors.load_word2vec_format(model_fname, binary = True, limit = 100000)
     elif model_name == "wikipedia":
+        glove2word2vec(model_fname, "routes/word2vec/models/tmp.txt")
+        models[model_name] = KeyedVectors.load_word2vec_format("routes/word2vec/models/tmp.txt", limit = 100000)
+    elif model_name == "twitter":
         glove2word2vec(model_fname, "routes/word2vec/models/tmp.txt")
         models[model_name] = KeyedVectors.load_word2vec_format("routes/word2vec/models/tmp.txt", limit = 100000)
 

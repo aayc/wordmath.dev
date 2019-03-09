@@ -13,7 +13,7 @@ class App extends Component {
       equation: "",
       
       wikipedia: [],
-      twitter: ["hey", "hello", "a", "b", "c", "d", "e"],
+      twitter: [],
       google_news: [],
     }
   }
@@ -27,7 +27,8 @@ class App extends Component {
         console.log("RESULTS: " + JSON.stringify(results))
         this.setState({ 
           wikipedia: results["wikipedia"].split(" "),
-          google_news: results["google_news"].split(" ")
+          google_news: results["google_news"].split(" "),
+          twitter: results["twitter"].split(" ")
         })
       })
   }
