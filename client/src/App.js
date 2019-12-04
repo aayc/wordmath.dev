@@ -7,10 +7,8 @@ class App extends Component {
     super(props)
     
     this.WORD_LIMIT = 7
-
     this.state = {
       equation: "",
-      
       wikipedia: [],
       twitter: [],
       google_news: [],
@@ -23,17 +21,19 @@ class App extends Component {
     fetch("/compute?eq=" + encodeURIComponent(eq_string))
       .then(res => res.json())
       .then(results => {
-        console.log("RESULTS: " + JSON.stringify(results))
-        this.setState({ 
-          wikipedia: results["wikipedia"].split(" "),
-          google_news: results["google_news"].split(" "),
-          twitter: results["twitter"].split(" ")
-        })
+        if ("error" in results) {
+          alert(results.error)
+        } else {
+          this.setState({ 
+            wikipedia: results["wikipedia"],
+            google_news: results["google_news"],
+            twitter: results["twitter"]
+          })
+        }
       })
   }
 
   handleEquationChange = (e) => {
-
     this.setState({ equation: e.target.value.toLowerCase().replace(/\d/g, "") });
   }
 
